@@ -1,2 +1,6 @@
-@import './common';
-@import './example';
+@use './components/base';
+@use './components/header';
+@use './components/main';
+@use './components/footer';
+@use './components/movie-modal';
+@use './components/team-modal';

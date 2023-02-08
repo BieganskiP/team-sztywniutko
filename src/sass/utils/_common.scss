@@ -1,0 +1,27 @@
+@import '~node_modules/modern-normalize/modern-normalize.css';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+@mixin fontTextStandard {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+@mixin fontHeaderModal {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+@mixin fontTextModal {
+  font-size: 12px;
+  line-height: 20px;
+}
