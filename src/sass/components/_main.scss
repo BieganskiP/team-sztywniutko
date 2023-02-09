@@ -9,3 +9,51 @@
 
 // Do not modify above this line
 //--------------------------------
+.film-container{
+    display: flex;
+    gap: 20px;
+   // justify-content: flex-start;
+  padding-left: 20px;
+  padding-right: 20px;
+   padding-top: 60px;
+}
+
+.film-set{
+  display: flex;
+flex-wrap: wrap;
+ gap: 20px;
+ padding: 0;
+  list-style: none;
+}
+
+
+
+@media screen and (min-width: 768px) {
+  .film-container{
+  padding-left: 76px;
+  padding-right: 75px;
+  padding-top: 60px;
+}
+
+.film-set{
+ gap: 30px;
+
+}
+
+.film-card{
+  flex-basis: calc((100% - 30px) / 2);
+}
+
+}
+
+@media screen and (min-width: 1024px) {
+   .film-container{
+  padding-left: 71px;
+  padding-right: 71px;
+ }
+
+.film-card{
+  flex-basis: calc((100% - 2*30px) / 3);
+}
+
+}
