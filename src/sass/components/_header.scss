@@ -9,3 +9,178 @@
 
 // Do not modify above this line
 //--------------------------------
+
+.header {
+  width: 100%;
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.56) 0%,
+      rgba(0, 0, 0, 0.56) 100%
+    ),
+    url('../images/background/background-home.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-weight: 400;
+  padding: 45px 20px;
+}
+
+.library {
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.56) 0%,
+      rgba(0, 0, 0, 0.56) 100%
+    ),
+    url('../images/background/background-queue.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.header__container {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.header__title {
+  display: none;
+}
+
+.header__logo {
+  height: 24px;
+  text-decoration: none;
+}
+.header__logo-icon {
+  stroke: #818181;
+  width: 24px;
+  height: 24px;
+}
+.nav {
+  display: flex;
+}
+.nav__btn {
+  position: relative;
+  text-decoration: none;
+  color: $header-text;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  margin-left: 40px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  border: none;
+  background: none;
+}
+
+.nav__btn:hover {
+  cursor: pointer;
+
+  text-shadow: 0 0 20px #fff, 0 0 30px $accent, 0 0 40px $accent,
+    0 0 80px $accent, 0 0 120px $accent, 0 0 160px $accent;
+}
+
+.nav__btn--active::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: $accent;
+  bottom: -3px;
+  left: 0;
+}
+
+.search-form {
+  padding: 41px 0 26px;
+  display: flex;
+}
+.search-form__input {
+  background: none;
+  color: $header-text;
+  outline: none;
+  border: none;
+  border-bottom: $header-text 0.5px solid;
+  width: 100%;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  &::placeholder {
+    color: $header-text;
+    opacity: 1;
+  }
+  &::-ms-input-placeholder {
+    color: $header-text;
+  }
+}
+
+.search-form__icon {
+  stroke: $header-text;
+  width: 12px;
+  height: 12px;
+  position: relative;
+  right: 15px;
+}
+
+.header__error {
+  color: $error;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.header__library-container {
+  display: none;
+  padding: 49px 0 20px;
+  justify-content: center;
+  align-items: center;
+  column-gap: 20px;
+}
+
+.library-container__btn {
+  background: none;
+  color: $header-text;
+  border: 1px solid $header-text;
+  border-radius: 5px;
+  padding: 14px 0 12px;
+  width: 130px;
+
+  &--active {
+    background-color: $accent;
+    border: 1px solid $accent;
+    filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
+  }
+}
+
+@media (min-width: 768px) {
+  .header {
+    padding: 45px 70px 60px;
+  }
+  .header__title {
+    display: inline-block;
+    text-decoration: none;
+    color: $header-text;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 35px;
+    margin-left: 10px;
+  }
+  .search-form {
+    padding: 41px 145px 22px;
+  }
+  .header__error {
+    text-align: center;
+  }
+  .header__library-container {
+    padding: 45px 0 5px;
+    column-gap: 15px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .header {
+    padding: 41px 71px 59px;
+  }
+
+  .search-form {
+    padding: 41px 273px 22px;
+  }
+}
