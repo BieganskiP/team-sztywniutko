@@ -10,18 +10,6 @@
 // Do not modify above this line
 //--------------------------------
 
-@use '../utils' as *;
-
-// Media smartphone
-// Do not use media for smartphones, unless its orientationl.
-// Media tablet
-// @media (min-width: 768px)
-// Media desktop
-// @media (min-width: 1024px)
-
-// Do not modify above this line
-//--------------------------------
-
 // Container with image and description:
 .movie-container {
   display: flex;
@@ -29,7 +17,7 @@
   // justify-content: flex-start;
   padding-left: 20px;
   padding-right: 20px;
-  padding-top: 60px;
+  padding-top: 20px;
 }
 
 .movie-set {
@@ -38,6 +26,7 @@
   gap: 20px;
   padding: 0;
   list-style: none;
+  justify-content: center;
 }
 
 .movie-card {
@@ -47,7 +36,7 @@
   flex-direction: column;
   max-width: 280px;
   max-height: 443px;
-  margin: 20px;
+  //margin: 20px;
   &__img {
     border-radius: 5px;
     height: 100%;
@@ -78,14 +67,6 @@
 
 // Tablet media:
 @media screen and (min-width: 768px) {
-  .movie-card {
-    max-width: 293px;
-    max-height: 440px;
-    margin: 30px;
-    &__img {
-      max-height: 398px;
-    }
-  }
   .movie-container {
     padding-left: 76px;
     padding-right: 75px;
@@ -93,16 +74,27 @@
   }
   .movie-set {
     gap: 30px;
+    justify-content: flex-start;
+  }
+  .movie-card {
+    max-width: 293px;
+    max-height: 440px;
+    flex-basis: calc((100% - 1 * 30px) / 2);
+    //margin: 30px;
+    &__img {
+      max-height: 398px;
+    }
   }
 }
 
 // Desktop media:
 @media screen and (min-width: 1024px) {
-  .movie-card {
-    max-width: 274px;
-  }
   .movie-container {
     padding-left: 71px;
     padding-right: 71px;
+  }
+  .movie-card {
+    max-width: 274px;
+    flex-basis: calc((100% - 2 * 30px) / 3);
   }
 }
