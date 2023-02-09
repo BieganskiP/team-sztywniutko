@@ -23,6 +23,17 @@
   font-weight: 400;
   padding: 45px 20px;
 }
+
+.library {
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.56) 0%,
+      rgba(0, 0, 0, 0.56) 100%
+    ),
+    url('../images/background/background-queue.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 .header__container {
   display: flex;
   align-items: baseline;
@@ -48,7 +59,7 @@
 .nav__btn {
   position: relative;
   text-decoration: none;
-  color: white;
+  color: $header-text;
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
@@ -64,8 +75,8 @@
 .nav__btn:hover {
   cursor: pointer;
 
-  text-shadow: 0 0 20px #fff, 0 0 30px #ff6b08, 0 0 40px #ff6b08,
-    0 0 80px #ff6b08, 0 0 120px #ff6b08, 0 0 160px #ff6b08;
+  text-shadow: 0 0 20px #fff, 0 0 30px $accent, 0 0 40px $accent,
+    0 0 80px $accent, 0 0 120px $accent, 0 0 160px $accent;
 }
 
 .nav__btn--active::after {
@@ -73,7 +84,7 @@
   position: absolute;
   width: 100%;
   height: 3px;
-  background-color: #ff6b08;
+  background-color: $accent;
   bottom: -3px;
   left: 0;
 }
@@ -84,25 +95,25 @@
 }
 .search-form__input {
   background: none;
-  color: white;
+  color: $header-text;
   outline: none;
   border: none;
-  border-bottom: white 0.5px solid;
+  border-bottom: $header-text 0.5px solid;
   width: 100%;
   font-weight: 400;
   font-size: 14px;
   line-height: 16px;
   &::placeholder {
-    color: white;
+    color: $header-text;
     opacity: 1;
   }
   &::-ms-input-placeholder {
-    color: white;
+    color: $header-text;
   }
 }
 
 .search-form__icon {
-  stroke: white;
+  stroke: $header-text;
   width: 12px;
   height: 12px;
   position: relative;
@@ -110,10 +121,33 @@
 }
 
 .header__error {
-  color: red;
+  color: $error;
   font-weight: 400;
   font-size: 14px;
   line-height: 16px;
+}
+
+.header__library-container {
+  display: none;
+  padding: 49px 0 20px;
+  justify-content: center;
+  align-items: center;
+  column-gap: 20px;
+}
+
+.library-container__btn {
+  background: none;
+  color: $header-text;
+  border: 1px solid $header-text;
+  border-radius: 5px;
+  padding: 14px 0 12px;
+  width: 130px;
+
+  &--active {
+    background-color: $accent;
+    border: 1px solid $accent;
+    filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
+  }
 }
 
 @media (min-width: 768px) {
@@ -123,7 +157,7 @@
   .header__title {
     display: inline-block;
     text-decoration: none;
-    color: white;
+    color: $header-text;
     font-weight: 500;
     font-size: 30px;
     line-height: 35px;
@@ -134,6 +168,10 @@
   }
   .header__error {
     text-align: center;
+  }
+  .header__library-container {
+    padding: 45px 0 5px;
+    column-gap: 15px;
   }
 }
 

@@ -14,23 +14,39 @@
       <h1 class="header__title">Filmoteka</h1></a
     >
     <nav class="nav">
-      <button type="button" class="nav__btn nav__btn--active">HOME</button>
+      <button type="button" class="nav__btn nav__btn--active" data-homepage>
+        HOME
+      </button>
 
-      <button type="button" class="nav__btn">MY LIBRARY</button>
+      <button type="button" class="nav__btn" data-library>MY LIBRARY</button>
     </nav>
   </div>
-  <form class="search-form">
-    <input
-      class="search-form__input"
-      type="text"
-      name="title"
-      placeholder="Movie search"
-    /><svg class="search-form__icon">
-      <use href="./images/icons.svg#icon-search"></use>
-    </svg>
-  </form>
-  <p class="header__error">
-    We didn't find any movies matching your search. Please enter the correct
-    movie title.
-  </p>
+  <div class="header__homepage-container">
+    <form class="search-form">
+      <input
+        class="search-form__input"
+        type="text"
+        name="title"
+        placeholder="Movie search"
+      /><svg class="search-form__icon">
+        <use href="./images/icons.svg#icon-search"></use>
+      </svg>
+    </form>
+    <p class="header__error">
+      We didn't find any movies matching your search. Please enter the correct
+      movie title.
+    </p>
+  </div>
+  <div class="header__library-container">
+    <button
+      type="button"
+      class="library-container__btn library-container__btn--active"
+      data-watched
+    >
+      <span class="librart-container__btn-text">WATCHED</span>
+    </button>
+    <button type="button" class="library-container__btn" data-queue>
+      <span class="librart-container__btn-text">QUEUE</span>
+    </button>
+  </div>
 </header>
