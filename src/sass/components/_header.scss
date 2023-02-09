@@ -9,3 +9,140 @@
 
 // Do not modify above this line
 //--------------------------------
+
+.header {
+  width: 100%;
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.56) 0%,
+      rgba(0, 0, 0, 0.56) 100%
+    ),
+    url('../images/background/background-home.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-weight: 400;
+  padding: 45px 20px;
+}
+.header__container {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.header__title {
+  display: none;
+}
+
+.header__logo {
+  height: 24px;
+  text-decoration: none;
+}
+.header__logo-icon {
+  stroke: #818181;
+  width: 24px;
+  height: 24px;
+}
+.nav {
+  display: flex;
+}
+.nav__btn {
+  position: relative;
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  margin-left: 40px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  border: none;
+  background: none;
+}
+
+.nav__btn:hover {
+  cursor: pointer;
+
+  text-shadow: 0 0 20px #fff, 0 0 30px #ff6b08, 0 0 40px #ff6b08,
+    0 0 80px #ff6b08, 0 0 120px #ff6b08, 0 0 160px #ff6b08;
+}
+
+.nav__btn--active::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: #ff6b08;
+  bottom: -3px;
+  left: 0;
+}
+
+.search-form {
+  padding: 41px 0 26px;
+  display: flex;
+}
+.search-form__input {
+  background: none;
+  color: white;
+  outline: none;
+  border: none;
+  border-bottom: white 0.5px solid;
+  width: 100%;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  &::placeholder {
+    color: white;
+    opacity: 1;
+  }
+  &::-ms-input-placeholder {
+    color: white;
+  }
+}
+
+.search-form__icon {
+  stroke: white;
+  width: 12px;
+  height: 12px;
+  position: relative;
+  right: 15px;
+}
+
+.header__error {
+  color: red;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+@media (min-width: 768px) {
+  .header {
+    padding: 45px 70px 60px;
+  }
+  .header__title {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 35px;
+    margin-left: 10px;
+  }
+  .search-form {
+    padding: 41px 145px 22px;
+  }
+  .header__error {
+    text-align: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .header {
+    padding: 41px 71px 59px;
+  }
+
+  .search-form {
+    padding: 41px 273px 22px;
+  }
+}
