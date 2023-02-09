@@ -22,6 +22,11 @@
   background-repeat: no-repeat;
   font-weight: 400;
   padding: 45px 20px;
+
+  &__content-width {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 }
 
 .library {
