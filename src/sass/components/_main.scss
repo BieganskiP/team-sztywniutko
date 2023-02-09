@@ -14,7 +14,6 @@
 .movie-container {
   display: flex;
   gap: 20px;
-  // justify-content: flex-start;
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 20px;
@@ -92,6 +91,11 @@
   .movie-container {
     padding-left: 71px;
     padding-right: 71px;
+    max-width: 1200px;
+    justify-content: center;
+  }
+   .movie-set {
+    justify-content: center;
   }
   .movie-card {
     max-width: 274px;
