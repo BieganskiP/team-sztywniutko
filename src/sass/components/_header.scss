@@ -125,6 +125,8 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 16px;
+  max-height: 32px;
+  visibility: hidden;
 }
 
 .header__library-container {
@@ -142,6 +144,10 @@
   border-radius: 5px;
   padding: 14px 0 12px;
   width: 130px;
+
+  &:hover {
+    cursor: pointer;
+  }
 
   &--active {
     background-color: $accent;

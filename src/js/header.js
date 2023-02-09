@@ -1,7 +1,6 @@
 const homeBtn = document.querySelector('[data-homepage]');
 const libraryBtn = document.querySelector('[data-library]');
 const header = document.querySelector('header');
-
 const libraryDiv = document.querySelector('.header__library-container');
 const headerSearchDiv = document.querySelector('.header__homepage-container');
 const watchedBtn = document.querySelector('[data-watched]');
@@ -26,6 +25,10 @@ export const libraryHeaderDisplay = e => {
   e.currentTarget.classList.add('nav__btn--active');
   homeBtn.classList.remove('nav__btn--active');
   homeBtn.addEventListener('click', mainHeaderDisplay);
+  if (queueBtn.classList.contains('library-container__btn--active')) {
+    queueBtn.classList.remove('library-container__btn--active');
+    watchedBtn.classList.add('library-container__btn--active');
+  }
 };
 
 export const activateLibraryBtn = e => {
