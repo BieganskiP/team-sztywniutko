@@ -9,51 +9,100 @@
 
 // Do not modify above this line
 //--------------------------------
-.film-container{
-    display: flex;
-    gap: 20px;
-   // justify-content: flex-start;
+
+@use '../utils' as *;
+
+// Media smartphone
+// Do not use media for smartphones, unless its orientationl.
+// Media tablet
+// @media (min-width: 768px)
+// Media desktop
+// @media (min-width: 1024px)
+
+// Do not modify above this line
+//--------------------------------
+
+// Container with image and description:
+.movie-container {
+  display: flex;
+  gap: 20px;
+  // justify-content: flex-start;
   padding-left: 20px;
   padding-right: 20px;
-   padding-top: 60px;
-}
-
-.film-set{
-  display: flex;
-flex-wrap: wrap;
- gap: 20px;
- padding: 0;
-  list-style: none;
-}
-
-
-
-@media screen and (min-width: 768px) {
-  .film-container{
-  padding-left: 76px;
-  padding-right: 75px;
   padding-top: 60px;
 }
 
-.film-set{
- gap: 30px;
-
+.movie-set {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 0;
+  list-style: none;
 }
 
-.film-card{
-  flex-basis: calc((100% - 30px) / 2);
+.movie-card {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  max-width: 280px;
+  max-height: 443px;
+  margin: 20px;
+  &__img {
+    border-radius: 5px;
+    height: 100%;
+    max-height: 402px;
+    width: 100%;
+  }
+  &__description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    padding-top: 10px;
+    &--title {
+      text-transform: uppercase;
+      color: $main-text;
+      line-height: 16px;
+    }
+    &--category {
+      color: $accent;
+      line-height: 14px;
+    }
+  }
 }
 
+// Tablet media:
+@media screen and (min-width: 768px) {
+  .movie-card {
+    max-width: 293px;
+    max-height: 440px;
+    margin: 30px;
+    &__img {
+      max-height: 398px;
+    }
+  }
+  .movie-container {
+    padding-left: 76px;
+    padding-right: 75px;
+    padding-top: 60px;
+  }
+  .movie-set {
+    gap: 30px;
+  }
 }
 
+// Desktop media:
 @media screen and (min-width: 1024px) {
-   .film-container{
-  padding-left: 71px;
-  padding-right: 71px;
- }
-
-.film-card{
-  flex-basis: calc((100% - 2*30px) / 3);
-}
-
+  .movie-card {
+    max-width: 274px;
+  }
+  .movie-container {
+    padding-left: 71px;
+    padding-right: 71px;
+  }
 }
