@@ -9,3 +9,146 @@
 
 // Do not modify above this line
 //--------------------------------
+
+.is-hidden {
+  opacity: 0;
+  z-index: -1;
+}
+
+.backdrop {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  background: #404040bf;
+}
+
+.movie-modal {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $header-text;
+  width: 280px;
+  position: absolute;
+  &__button {
+    width: 112px;
+    height: 44px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    background-color: $header-text;
+    @include fontTextStandard;
+    padding: 6px;
+    &--watched {
+      background-color: $accent;
+      color: white;
+      border: none;
+    }
+    &--close {
+      position: absolute;
+      right: 18px;
+      top: 18px;
+      border: none;
+      background-color: white;
+      cursor: pointer;
+    }
+  }
+  &__container {
+    padding: 48px 20px 41px 20px;
+    &--rating {
+      display: flex;
+      gap: 40px;
+      @include fontTextStandard;
+    }
+    &--buttons {
+      display: flex;
+      gap: 15px;
+    }
+  }
+  &__categories,
+  &__values {
+    list-style: none;
+    & li {
+      padding-bottom: 10px;
+      &:nth-child(1) {
+        display: flex;
+      }
+    }
+    &--orange {
+      background-color: $accent;
+      width: 36px;
+      height: 16px;
+      border-radius: 5px;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  &__image {
+    width: 240px;
+    height: 356px;
+    padding-bottom: 30px;
+  }
+  &__header {
+    @include fontHeaderModal;
+    padding-bottom: 20px;
+    &--about {
+      @include fontTextStandard;
+      padding: 10px 0;
+    }
+  }
+  &__icon {
+    stroke: $main-text;
+    width: 24px;
+    height: 24px;
+  }
+  &__categories {
+    color: $modal-text;
+  }
+  &__text {
+    @include fontTextModal;
+    padding-bottom: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .movie-modal {
+    width: 618px;
+    &__image {
+      width: 264px;
+      height: 374px;
+      padding: 0;
+    }
+    &__container {
+      display: flex;
+      flex-direction: row;
+      gap: 32px;
+      padding: 42px 30px 40px 28px;
+    }
+    &__button {
+      width: 125px;
+      height: 44px;
+      cursor: pointer;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .movie-modal {
+    width: 882px;
+    &__image {
+      width: 396px;
+      height: 478px;
+    }
+    &__header {
+      @include fontHeaderModalDesktop;
+    }
+    &__container {
+      padding: 50px 30px 40px;
+      &--text {
+        width: 396px;
+      }
+    }
+  }
+}

@@ -25,3 +25,7 @@ img {
   font-size: 12px;
   line-height: 20px;
 }
+@mixin fontHeaderModalDesktop {
+  font-size: 30px;
+  line-height: 35px;
+}
