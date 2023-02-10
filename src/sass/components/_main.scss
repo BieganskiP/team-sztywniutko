@@ -11,6 +11,12 @@
 //--------------------------------
 
 // Container with image and description:
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .movie-container {
   display: flex;
   gap: 20px;
@@ -94,7 +100,7 @@
     max-width: 1200px;
     justify-content: center;
   }
-   .movie-set {
+  .movie-set {
     justify-content: center;
   }
   .movie-card {
