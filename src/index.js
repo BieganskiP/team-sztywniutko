@@ -6,9 +6,8 @@ console.log('test');
 import { displayHomePage } from './js/header';
 import { displayLibrary } from './js/header';
 import { swtichLibrary } from './js/header';
-import { mainHeaderDisplay } from './js/header';
-import { libraryHeaderDisplay } from './js/header';
-import { activateLibraryBtn } from './js/header';
+
+
 import { openModal } from './js/modal';
 import { closeModal } from './js/modal';
 import { closeModalWithEscapeKey } from './js/modal';
