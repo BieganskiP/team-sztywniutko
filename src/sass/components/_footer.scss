@@ -9,3 +9,55 @@
 
 // Do not modify above this line
 //--------------------------------
+.footer {
+  width: 100%;
+  background-color: #f7f7f7;
+  font-weight: 400;
+
+  &__content-width {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+.rights {
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  align-items: center;
+  color: #545454;
+}
+
+.icon-heart {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.flex {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.no-blue {
+  color: #545454;
+}
+
+@media (min-width: 768px) {
+  .flex {
+    gap: 5px;
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .rights {
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+}
