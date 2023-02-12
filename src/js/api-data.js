@@ -31,27 +31,20 @@ export async function getPopular(page) {
     })
     .then(data => {
       data.results.forEach(movie => {
-        const genres = getMoreDetails(movie.id);
-        console.log(genres);
-        fillMain(movie, genres);
+        fetch(
+          `https://api.themoviedb.org/3/movie/${movie.id}?api_key=${apiInfo.apiKey}`
+        )
+          .then(response => {
+            return response.json();
+          })
+          .then(data => {
+            const genres = data.genres;
+            let genre = genres.map(genre => {
+              return genre['name'];
+            });
+            fillMain(data, genre);
+          });
       });
-    });
-}
-
-async function getMoreDetails(id) {
-  return await fetch(
-    `https://api.themoviedb.org/3/movie/${id}?api_key=${apiInfo.apiKey}`
-  )
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(response.status);
-      }
-      return response.json();
-    })
-    .then(data => {
-      const info = data.genres;
-
-      return info;
     });
 }
 
@@ -60,10 +53,15 @@ async function fillMain(movie, genres) {
     'beforeend',
     `
     <li class="movie-card modal-open">
-    <img class="movie-card__img" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" />
+    <img class="movie-card__img" src="https://image.tmdb.org/t/p/w500${
+      movie.poster_path
+    }" />
     <div class="movie-card__description">
-      <h2 class="movie-card__description--title">${movie.original_title}</h2>
-      <p class="movie-card__description--category">${genres}</p>
+      <h2 class="movie-card__description--title">${movie.title}</h2>
+      <p class="movie-card__description--category">${genres} | ${movie.release_date.substring(
+      0,
+      4
+    )}</p>
     </div>
   </li>`
   );
