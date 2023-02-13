@@ -47,26 +47,32 @@ async function fetchMoviesAndCategories() {
 
 fetchMoviesAndCategories()
   .then(([movies, configuration, genres]) => {
-    movies.results.forEach(movie => {
-      let title = movie.title;
-      let category = mapGenreIdsToName(movie.genre_ids, genres);
-      let year = movie.release_date.slice(0, 4);
-      let poster = configuration.base_url + 'w500' + movie.poster_path;
-      movieLibraryContainer.insertAdjacentHTML(
-        'beforeend',
-        `
-  <li class="movie-card modal-open">
-    <img class="movie-card__img" src="${poster}" alt"${title}"/>
-    <div class="movie-card__description">
-      <h2 class="movie-card__description--title">${title}</h2>
-      <p class="movie-card__description--category">${category} | ${year}</p>
-    </div>
-  </li>`
-      );
-    });
+    showMovieList(movies, configuration, genres);
+    // This is the way to find movie id after clicking to show modal window.
+    console.log(document.querySelector('.movie-card').dataset.movieId);
   })
   .catch(error => {
     console.error(
       'movies or categories request failed. Error: ' + error.message
     );
   });
+
+function showMovieList(movies, configuration, genres) {
+  movies.results.forEach(movie => {
+    let title = movie.title;
+    let category = mapGenreIdsToName(movie.genre_ids, genres);
+    let year = movie.release_date.slice(0, 4);
+    let poster = configuration.base_url + 'w500' + movie.poster_path;
+    movieLibraryContainer.insertAdjacentHTML(
+      'beforeend',
+      `
+  <li class="movie-card modal-open" data-movie-id="${movie.id}">
+    <img class="movie-card__img" src="${poster}" alt"${title}"/>
+    <div class="movie-card__description">
+      <h2 class="movie-card__description--title">${title}</h2>
+      <p class="movie-card__description--category">${category} | ${year}</p>
+    </div>
+  </li>`
+    );
+  });
+}

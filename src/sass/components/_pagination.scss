@@ -1,0 +1,24 @@
+@use '../utils' as *;
+
+.pagination a {
+  color: $main-text;
+  //position: absolute;
+  padding: 8px 16px;
+  text-decoration: none;
+  // transition: background-color .3s;
+}
+
+.pagination a.active {
+  border-radius: 5px;
+  background-color: $accent;
+  color: $header-text;
+}
+
+.pagination a:hover:not(.active) {
+  border-radius: 5px;
+  background-color: #f7f7f7;
+}
+
+.icon-arrow--left{
+transform: matrix(-1, 0, 0, 1, 0, 0);
+}
