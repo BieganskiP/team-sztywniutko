@@ -1,15 +1,16 @@
-import axios from 'axios';
-import Notify from 'notiflix';
+console.log('test');
 
+// https://api.themoviedb.org/3/movie/550?api_key=bfe21f4061b2869ccff2b4c323a3a257
+
+// bfe21f4061b2869ccff2b4c323a3a257
 import { displayHomePage } from './js/header';
 import { displayLibrary } from './js/header';
 import { swtichLibrary } from './js/header';
 
+
 import { openModal } from './js/modal';
 import { closeModal } from './js/modal';
 import { closeModalWithEscapeKey } from './js/modal';
-
-import { getMovie, getPopular } from './js/api-data';
 
 const homeBtn = document.querySelector('[data-homepage]');
 const libraryBtn = document.querySelector('[data-library]');
@@ -29,21 +30,8 @@ queueBtn.addEventListener('click', swtichLibrary);
 const libraryItem = document.querySelector('.modal-open');
 const closeModalButton = document.querySelector('.modal-close');
 
-// libraryItem.addEventListener('click', openModal);
-// closeModalButton.addEventListener('click', closeModal);
-// document.addEventListener('keydown', closeModalWithEscapeKey);
-
-const input = document.querySelector('.search-form__input');
-const searchButton = document.querySelector('.search-form');
-
-getPopular(1);
-searchButton.addEventListener('submit', event => {
-  console.log(input.value);
-  input.innerHTML = '';
-  event.preventDefault();
-  if (input.value == '') {
-    return;
-  } else {
-    getMovie(input.value);
-  }
-});
+libraryBtn.addEventListener('click', libraryHeaderDisplay);
+queueBtn.addEventListener('click', activateLibraryBtn);
+libraryItem.addEventListener('click', openModal);
+closeModalButton.addEventListener('click', closeModal);
+document.addEventListener('keydown', closeModalWithEscapeKey);
