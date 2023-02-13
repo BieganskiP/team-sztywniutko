@@ -54,7 +54,7 @@ fetchMoviesAndCategories()
         'beforeend',
         `
   <li class="movie-card modal-open">
-    <img class="movie-card__img" src="${poster}" />
+    <img class="movie-card__img" src="${poster}" alt"${title}"/>
     <div class="movie-card__description">
       <h2 class="movie-card__description--title">${title}</h2>
       <p class="movie-card__description--category">${category} | ${year}</p>
