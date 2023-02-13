@@ -19,7 +19,7 @@ function mapGenreIdsToName(ids, map) {
 
 async function fetchMoviesAndCategories() {
   const [moviesResponse, confResponse, genresResponse] = await Promise.all([
-    fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}`),
+    fetch(`https://api.themoviedb.org/3/popular/movie/day?api_key=${apiKey}`),
     fetch(`https://api.themoviedb.org/3/configuration?api_key=${apiKey}`),
     fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`),
   ]);
