@@ -6,6 +6,8 @@ let apiKey = 'bfe21f4061b2869ccff2b4c323a3a257';
 
 const movieLibraryContainer = document.querySelector('.movie-set');
 
+import { attachModal } from './modal.js';
+
 function mapGenreIdsToName(ids, map) {
   let result = [];
   ids.forEach(id => {
@@ -49,7 +51,7 @@ fetchMoviesAndCategories()
   .then(([movies, configuration, genres]) => {
     showMovieList(movies, configuration, genres);
     // This is the way to find movie id after clicking to show modal window.
-    console.log(document.querySelector('.movie-card').dataset.movieId);
+    //console.log(document.querySelector('.movie-card').dataset.movieId);
   })
   .catch(error => {
     console.error(
@@ -66,7 +68,7 @@ function showMovieList(movies, configuration, genres) {
     movieLibraryContainer.insertAdjacentHTML(
       'beforeend',
       `
-  <li class="movie-card modal-open" data-movie-id="${movie.id}">
+  <li class="movie-card" data-movie-id="${movie.id}" modal-open>
     <img class="movie-card__img" src="${poster}" alt"${title}"/>
     <div class="movie-card__description">
       <h2 class="movie-card__description--title">${title}</h2>
@@ -74,5 +76,6 @@ function showMovieList(movies, configuration, genres) {
     </div>
   </li>`
     );
+    attachModal();
   });
 }
