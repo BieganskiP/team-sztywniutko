@@ -1,0 +1,25 @@
+@use '../utils' as *;
+
+// Media smartphone
+// Do not use media for smartphones, unless its orientationl.
+// Media tablet
+// @media (min-width: 768px)
+// Media desktop
+// @media (min-width: 1024px)
+
+// Do not modify above this line
+//--------------------------------
+
+.library-container {
+  padding: 20px;
+  display: none;
+}
+.library__starter {
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .library-container {
+    padding: 60px 75px 50px;
+  }
+}
