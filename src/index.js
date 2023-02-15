@@ -20,6 +20,7 @@ const libraryBtns = document.querySelectorAll('.library-container__btn');
 const watchedMoviesContainer = document.querySelector('.watched');
 const queuedMoviesContainer = document.querySelector('.queued');
 const libraryContainer = document.querySelector('.library-container');
+const loader = document.querySelector('.loader');
 
 libraryBtn.addEventListener('click', displayLibrary);
 queueBtn.addEventListener('click', swtichLibrary);

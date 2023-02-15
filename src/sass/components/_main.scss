@@ -17,6 +17,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .movie-container {
   display: flex;
   gap: 20px;
@@ -67,6 +68,42 @@
       color: $accent;
       line-height: 14px;
     }
+  }
+}
+
+//loader
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loader {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+
+  &__container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 40px;
+  }
+
+  &__film {
+    position: absolute;
+    top: -30px;
+    left: 0;
+    display: flex;
+  }
+
+  &__film-img {
+    animation: rotate 1.5s linear infinite;
   }
 }
 

@@ -2,6 +2,7 @@ let apiKey = 'bfe21f4061b2869ccff2b4c323a3a257';
 
 const movieLibraryContainer = document.querySelector('.movie-set');
 const pageNumbers = document.querySelector('.page-numbers');
+const loader = document.querySelector('.loader');
 
 let currentPageNumber = 1;
 
@@ -18,6 +19,7 @@ function mapGenreIdsToName(ids, map) {
   return result.join(', ');
 }
 async function fetchMoviesAndCategories(page) {
+  loader.style.display = 'flex';
   const [moviesResponse, confResponse, genresResponse] = await Promise.all([
     fetch(
       `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=${page}`
@@ -38,7 +40,7 @@ async function fetchMoviesAndCategories(page) {
     const message = `An error has occured: ${genresResponse.status}`;
     throw new Error(message);
   }
-
+  loader.style.display = 'none';
   const movies = await moviesResponse.json();
 
   const configuration = await confResponse.json();
