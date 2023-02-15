@@ -1,12 +1,9 @@
-
-
 // https://api.themoviedb.org/3/movie/550?api_key=bfe21f4061b2869ccff2b4c323a3a257
 
 // bfe21f4061b2869ccff2b4c323a3a257
 import { displayHomePage } from './js/header';
 import { displayLibrary } from './js/header';
 import { swtichLibrary } from './js/header';
-
 
 import { openModal } from './js/modal';
 import { closeModal } from './js/modal';
@@ -30,8 +27,5 @@ queueBtn.addEventListener('click', swtichLibrary);
 const libraryItem = document.querySelector('.modal-open');
 const closeModalButton = document.querySelector('.modal-close');
 
-libraryBtn.addEventListener('click', libraryHeaderDisplay);
-queueBtn.addEventListener('click', activateLibraryBtn);
-libraryItem.addEventListener('click', openModal);
-closeModalButton.addEventListener('click', closeModal);
 document.addEventListener('keydown', closeModalWithEscapeKey);
+

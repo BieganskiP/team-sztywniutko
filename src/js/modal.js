@@ -23,7 +23,7 @@ function closeModal() {
     .removeEventListener('click', closeModal);
 }
 
-function closeModalWithEscapeKey(event) {
+export function closeModalWithEscapeKey(event) {
   if (event.key === 'Escape') {
     closeModal();
     document.removeEventListener('keydown', event);
