@@ -5,24 +5,35 @@
   align-items: center;
   justify-content: center;
   margin-top: 20px;
-  .prev-button {
+  .next-button {
     rotate: 180deg;
   }
   .prev-button,
   .next-button {
-    border: none;
-    background-color: transparent;
-    color: #000;
-    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: $button-background;
+    border-radius: 5px;
     cursor: pointer;
     width: 40px;
     height: 40px;
+
     & svg {
-      width: 40px;
-      height: 40px;
+      width: 16px;
+      height: 16px;
+    }
+    & use {
+      fill: transparent;
+      stroke: $main-text;
+    }
+    &:hover use {
+      fill: transparent;
+      stroke: $accent;
     }
     &:hover {
-      color: #f00;
+      background-color: $main-text;
     }
   }
 
@@ -42,12 +53,13 @@
       transition: background-color 0.2s;
 
       &.active {
-        background-color: #f00;
+        background-color: $accent;
         color: #fff;
       }
 
       &:hover {
-        background-color: #eee;
+        background-color: $button-background;
+        color: $main-text;
       }
     }
   }
