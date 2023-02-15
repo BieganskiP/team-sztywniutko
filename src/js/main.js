@@ -58,14 +58,25 @@ export function pagination(page) {
       );
     });
 }
-export function selectPage(e) {
-  if (e.target.nodeName !== 'P') {
-    return;
-  }
-  movieLibraryContainer.innerHTML = '';
-  currentPageNumber = parseInt(e.target.id);
-  console.log(currentPageNumber);
-  pagination(currentPageNumber);
+function showMovieList(movies, configuration, genres) {
+  movies.results.forEach(movie => {
+    let title = movie.title;
+    let category = mapGenreIdsToName(movie.genre_ids, genres);
+    let year = movie.release_date.slice(0, 4);
+    let poster = configuration.base_url + 'w500' + movie.poster_path;
+    movieLibraryContainer.insertAdjacentHTML(
+      'beforeend',
+      `
+  <li class="movie-card" data-movie-id="${movie.id}" modal-open>
+    <img class="movie-card__img" src="${poster}" alt"${title}"/>
+    <div class="movie-card__description">
+      <h2 class="movie-card__description--title">${title}</h2>
+      <p class="movie-card__description--category">${category} | ${year}</p>
+    </div>
+  </li>`
+    );
+    attachModal();
+  });
 }
 
 function displayPagination(currentPageNumber) {
@@ -195,7 +206,15 @@ function displayPagination(currentPageNumber) {
     );
   }
 }
-
+export function selectPage(e) {
+  if (e.target.nodeName !== 'P') {
+    return;
+  }
+  movieLibraryContainer.innerHTML = '';
+  currentPageNumber = parseInt(e.target.id);
+  console.log(currentPageNumber);
+  pagination(currentPageNumber);
+}
 export function nextPageDisplay(e) {
   e.preventDefault();
   movieLibraryContainer.innerHTML = '';
@@ -211,25 +230,4 @@ export function prevPageDisplay(e) {
     console.log(currentPageNumber);
     pagination(currentPageNumber);
   }
-}
-
-function showMovieList(movies, configuration, genres) {
-  movies.results.forEach(movie => {
-    let title = movie.title;
-    let category = mapGenreIdsToName(movie.genre_ids, genres);
-    let year = movie.release_date.slice(0, 4);
-    let poster = configuration.base_url + 'w500' + movie.poster_path;
-    movieLibraryContainer.insertAdjacentHTML(
-      'beforeend',
-      `
-  <li class="movie-card" data-movie-id="${movie.id}" modal-open>
-    <img class="movie-card__img" src="${poster}" alt"${title}"/>
-    <div class="movie-card__description">
-      <h2 class="movie-card__description--title">${title}</h2>
-      <p class="movie-card__description--category">${category} | ${year}</p>
-    </div>
-  </li>`
-    );
-    attachModal();
-  });
 }

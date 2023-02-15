@@ -23,8 +23,6 @@ const libraryContainer = document.querySelector('.library-container');
 
 libraryBtn.addEventListener('click', displayLibrary);
 queueBtn.addEventListener('click', swtichLibrary);
-const libraryItem = document.querySelector('.modal-open');
-const closeModalButton = document.querySelector('.modal-close');
 
 document.addEventListener('keydown', closeModalWithEscapeKey);
 
