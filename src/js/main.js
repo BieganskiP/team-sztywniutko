@@ -7,7 +7,6 @@ const movieLibraryContainer = document.querySelector('.movie-set');
 const pageNumbers = document.querySelector('.page-numbers');
 const loader = document.querySelector('.loader');
 const searchInput = document.querySelector('.search-form__input');
-
 let currentPageNumber = 1;
 import { attachModal } from './modal.js';
 
@@ -97,6 +96,7 @@ async function fetchMoviesAndCategories(page) {
 
   return [movies, configuration.images, genres.genres];
 }
+
 export function pagination(page) {
   fetchMoviesAndCategories(page)
     .then(([movies, configuration, genres]) => {
