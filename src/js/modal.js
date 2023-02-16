@@ -122,15 +122,10 @@ async function fetchMovieById(movieId) {
 }
 
 function handleAddToFavorites(id) {
-  console.log(id);
   const localStorageWatched = localStorage.getItem('watchedList');
-  console.log('localStorageWatched', localStorageWatched);
   let localStorageWatchedParsed = [];
-  console.log('localStorageWatchedParsed', localStorageWatchedParsed);
-
   if (localStorageWatched) {
     localStorageWatchedParsed = JSON.parse(localStorageWatched);
-    console.log('localStorageWatchedParsed', localStorageWatchedParsed);
   }
 
   if (localStorageWatchedParsed.includes(id)) {
@@ -138,10 +133,6 @@ function handleAddToFavorites(id) {
   }
 
   localStorageWatchedParsed.push(id);
-  console.log('localStorageWatchedParsed', localStorageWatchedParsed);
-
   const currentArrayStringified = JSON.stringify(localStorageWatchedParsed);
-  console.log('currentArrayStringified', currentArrayStringified);
-
   localStorage.setItem('watchedList', currentArrayStringified);
 }
