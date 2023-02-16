@@ -9,7 +9,6 @@ const loader = document.querySelector('.loader');
 const searchInput = document.querySelector('.search-form__input');
 
 let currentPageNumber = 1;
-
 import { attachModal } from './modal.js';
 
 async function fetchMoviesByKeyword(keyword) {
@@ -42,11 +41,13 @@ searchInput.addEventListener(
   'input',
   _.debounce(() => {
     if (searchInput.value == '') {
+      pagination(currentPageNumber);
       return;
     } else {
       fetchMoviesByKeyword(searchInput.value)
         .then(([movies, configuration, genres]) => {
           showMovieList(movies, configuration, genres);
+          pageNumbers.innerHTML = '';
         })
         .catch(error => {
           console.error(
@@ -93,13 +94,13 @@ async function fetchMoviesAndCategories(page) {
 
   const configuration = await confResponse.json();
   const genres = await genresResponse.json();
+
   return [movies, configuration.images, genres.genres];
 }
 export function pagination(page) {
   fetchMoviesAndCategories(page)
     .then(([movies, configuration, genres]) => {
       showMovieList(movies, configuration, genres);
-
       displayPagination(currentPageNumber);
     })
     .catch(error => {
@@ -129,28 +130,7 @@ function showMovieList(movies, configuration, genres) {
     attachModal();
   });
 }
-export function selectPage(e) {
-  if (e.target.nodeName !== 'P') {
-    return;
-  }
-  movieLibraryContainer.innerHTML = '';
-  currentPageNumber = parseInt(e.target.id);
-  pagination(currentPageNumber);
-}
-export function nextPageDisplay(e) {
-  e.preventDefault();
-  movieLibraryContainer.innerHTML = '';
-  currentPageNumber++;
-  pagination(currentPageNumber);
-}
-export function prevPageDisplay(e) {
-  e.preventDefault();
-  if (currentPageNumber > 1) {
-    movieLibraryContainer.innerHTML = '';
-    currentPageNumber--;
-    pagination(currentPageNumber);
-  }
-}
+
 // function displayPagination(currentPageNumber) {
 //   pageNumbers.innerHTML = '';
 //   let pageID = currentPageNumber;
@@ -298,4 +278,26 @@ function displayPagination(currentPageNumber) {
   }
 
   pageNumbers.innerHTML = pageNumbersArr.join('');
+}
+export function selectPage(e) {
+  if (e.target.nodeName !== 'P') {
+    return;
+  }
+  movieLibraryContainer.innerHTML = '';
+  currentPageNumber = parseInt(e.target.id);
+  pagination(currentPageNumber);
+}
+export function nextPageDisplay(e) {
+  e.preventDefault();
+  movieLibraryContainer.innerHTML = '';
+  currentPageNumber++;
+  pagination(currentPageNumber);
+}
+export function prevPageDisplay(e) {
+  e.preventDefault();
+  if (currentPageNumber > 1) {
+    movieLibraryContainer.innerHTML = '';
+    currentPageNumber--;
+    pagination(currentPageNumber);
+  }
 }
