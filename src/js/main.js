@@ -7,7 +7,6 @@ const movieLibraryContainer = document.querySelector('.movie-set');
 const pageNumbers = document.querySelector('.page-numbers');
 const loader = document.querySelector('.loader');
 const searchInput = document.querySelector('.search-form__input');
-const modalListMovie = document.querySelector(`.movie-modal__container`);
 let currentPageNumber = 1;
 import { attachModal } from './modal.js';
 
@@ -97,6 +96,7 @@ async function fetchMoviesAndCategories(page) {
 
   return [movies, configuration.images, genres.genres];
 }
+
 export function pagination(page) {
   fetchMoviesAndCategories(page)
     .then(([movies, configuration, genres]) => {
@@ -301,93 +301,3 @@ export function prevPageDisplay(e) {
     pagination(currentPageNumber);
   }
 }
-fetchMoviesAndCategories()
-  .then(([movies, configuration]) => {
-    modalMovieInfo(movies, configuration);
-    console.log(movies.results);
-  })
-  .catch(error => {
-    console.error(
-      'movies or categories request failed. Error: ' + error.message
-    );
-  });
-function modalMovieInfo(movies, configuration) {
-  movies.results.forEach(movie => {
-    let id = movie.id;
-    let overview = movie.overview;
-    let vote = movie.vote_average;
-    let fullVote = movie.vote_count;
-    let popularity = movie.popularity;
-    let title = movie.title;
-    let poster = configuration.base_url + 'w500' + movie.poster_path;
-    modalListMovie.insertAdjacentHTML(
-      `beforeend`,
-      `
-        <img class="movie-modal__image" src="${poster}" />
-        <div class="movie-modal__container--text" >
-        <h3 class="movie-modal__header">${title}</h3>
-        <div class="movie-modal__container--rating">
-        <ul class="movie-modal__categories">
-              <li>Vote / Votes</li>
-              <li>Popularity</li>
-              <li>Original Title</li>
-              <li>Genre</li>
-            </ul>
-            <ul class="movie-modal__values">
-              <li>
-                <span class="movie-modal__values--orange">${vote}</span>  / ${fullVote}
-              </li>
-              <li>${popularity}</li>
-              <li>${title}</li>
-              <li>Western</li>
-            </ul>
-          </div>
-          <h4 class="movie-modal__header--about">ABOUT</h4>
-          <div class="movie-modal__text">${overview}</div>
-          <div class="movie-modal__container--buttons">
-            <button class="movie-modal__button movie-modal__button--watched">
-              ADD TO WATCHED
-            </button>
-            <button class="movie-modal__button">ADD TO QUEUE</button>
-          </div>
-        </div>
-        `
-    );
-  });
-}
-
-// localStorage addWatched
-
-// let addWatched = document.querySelector('.movie-modal__button--watched');
-// let input = document.querySelector(`input`);
-// let watchedArr = [];
-// let id = '';
-
-// let addToWatched = id => {
-//   let parseWatched = JSON.parse(localStorage.getItem('watchedAdd'));
-
-//   if (watchedArr.includes(id) || id === '') {
-//     return;
-//   } else if (watchedArr.length <= 0 && parseWatched !== null) {
-//     parseWatched.forEach(element => {
-//       watchedArr.unshift(element);
-//     });
-//     if (watchedArr.includes(id)) {
-//       return;
-//     } else {
-//       watchedArr.unshift(id);
-//     }
-//   } else {
-//     watchedArr.unshift(id);
-//   }
-//   localStorage.setItem('watchedAdd', JSON.stringify(watchedArr));
-// };
-
-// let inputValue = () => {
-//   id = input.value;
-// };
-
-// addWatched.addEventListener('click', () => {
-//   inputValue();
-//   addToWatched(id);
-// });
