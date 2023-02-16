@@ -1,7 +1,7 @@
 @use '../utils' as *;
 
 #toTopBtn {
-  display: none;
+  // display: none;
   position: fixed;
   bottom: 20px;
   right: 30px;
@@ -13,11 +13,22 @@
   padding: 15px;
   border-radius: 5px;
   & svg {
-    color: $header-text;
+    fill: $header-text;
     width: 16px;
     height: 16px;
   }
+  & use {
+    fill: $header-text;
+    stroke: $main-text;
+  }
+  &:hover use {
+    fill: $header-text;
+    stroke: $accent;
+  }
   &:hover {
     background-color: $main-text;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-property: fill, background-color;
   }
 }
