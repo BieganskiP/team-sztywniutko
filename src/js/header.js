@@ -10,6 +10,7 @@ const homepageMoviesContainer = document.querySelector('.movie-container');
 const watchedMoviesContainer = document.querySelector('.watched');
 const queuedMoviesContainer = document.querySelector('.queued');
 const libraryContainer = document.querySelector('.library-container');
+const nothingWatched = document.querySelector('.library__starter');
 
 export const displayHomePage = e => {
   e.currentTarget.removeEventListener('click', displayHomePage);
@@ -67,3 +68,39 @@ export const swtichLibrary = e => {
     queuedMoviesContainer.style.display = 'flex';
   }
 };
+
+import { fetchMovieById } from './modal.js';
+import { mapGenreIdsToName } from './modal.js';
+
+const localStorageWatched = localStorage.getItem('watchedList');
+
+const localStorageWatchedParsed = JSON.parse(localStorageWatched);
+
+localStorageWatchedParsed.forEach(id => {
+  console.log(id);
+  fetchMovieById(id).then(([movie, configuration]) => {
+    console.log(movie);
+    showWatchedList(movie, configuration);
+  });
+});
+
+function showWatchedList(movie, configuration) {
+  nothingWatched.style.display = 'none';
+  let title = movie.title;
+  let category = [];
+  movie.genres.forEach(genre => category.push(genre.name));
+  console.log(category);
+  let year = movie.release_date.slice(0, 4);
+  let poster = configuration.images.base_url + 'w500' + movie.poster_path;
+  watchedMoviesContainer.insertAdjacentHTML(
+    'beforeend',
+    `
+  <li class="movie-card" data-movie-id="${movie.id}" modal-open>
+    <img class="movie-card__img" src="${poster}" alt"${title}"/>
+    <div class="movie-card__description">
+      <h2 class="movie-card__description--title">${title}</h2>
+      <p class="movie-card__description--category">${category} | ${year}</p>
+    </div>
+  </li>`
+  );
+}

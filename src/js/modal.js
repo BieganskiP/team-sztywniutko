@@ -100,7 +100,7 @@ function modalMovieInfo(movie, configuration) {
   });
 }
 
-async function fetchMovieById(movieId) {
+export async function fetchMovieById(movieId) {
   const [singleMovieResponse, confResponse] = await Promise.all([
     fetch(`${base_url}/movie/${movieId}?api_key=${apiKey}&language=en-US`),
     fetch(`${base_url}/configuration?api_key=${apiKey}`),
