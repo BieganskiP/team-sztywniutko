@@ -56,7 +56,7 @@ searchInput.addEventListener(
     }
   }, DEBOUNCE_DELAY)
 );
-export function mapGenreIdsToName(ids, map) {
+function mapGenreIdsToName(ids, map) {
   let result = [];
   ids.forEach(id => {
     let genre = map.find(x => x.id === id).name;

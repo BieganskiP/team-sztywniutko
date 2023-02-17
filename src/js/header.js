@@ -45,6 +45,7 @@ export const displayLibrary = e => {
   libraryContainer.style.display = 'block';
   watchedMoviesContainer.style.display = 'flex';
   queuedMoviesContainer.style.display = 'none';
+  watchedMoviesList();
 };
 
 export const swtichLibrary = e => {
@@ -70,19 +71,21 @@ export const swtichLibrary = e => {
 };
 
 import { fetchMovieById } from './modal.js';
-import { mapGenreIdsToName } from './modal.js';
 
 const localStorageWatched = localStorage.getItem('watchedList');
 
 const localStorageWatchedParsed = JSON.parse(localStorageWatched);
-
-localStorageWatchedParsed.forEach(id => {
-  console.log(id);
-  fetchMovieById(id).then(([movie, configuration]) => {
-    console.log(movie);
-    showWatchedList(movie, configuration);
-  });
-});
+function watchedMoviesList() {
+  if (localStorageWatchedParsed != null) {
+    localStorageWatchedParsed.forEach(id => {
+      console.log(id);
+      fetchMovieById(id).then(([movie, configuration]) => {
+        console.log(movie);
+        showWatchedList(movie, configuration);
+      });
+    });
+  } else return;
+}
 
 function showWatchedList(movie, configuration) {
   nothingWatched.style.display = 'none';
