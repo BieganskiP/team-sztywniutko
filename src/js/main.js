@@ -38,7 +38,8 @@ async function fetchMoviesByKeyword(keyword) {
 }
 searchInput.addEventListener(
   'input',
-  _.debounce(() => {
+  _.debounce(e => {
+    e.preventDefault;
     if (searchInput.value == '') {
       pagination(currentPageNumber);
       return;
