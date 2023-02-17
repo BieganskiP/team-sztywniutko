@@ -20,6 +20,7 @@
 
 .movie-container {
   display: flex;
+  flex-direction: column;
   gap: 20px;
   padding-left: 20px;
   padding-right: 20px;
@@ -32,7 +33,8 @@
   gap: 20px;
   padding: 0;
   list-style: none;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: start;
 }
 
 .movie-card {

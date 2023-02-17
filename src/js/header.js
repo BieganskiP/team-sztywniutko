@@ -45,7 +45,7 @@ export const displayLibrary = e => {
   libraryContainer.style.display = 'block';
   watchedMoviesContainer.style.display = 'flex';
   queuedMoviesContainer.style.display = 'none';
-  watchedMoviesList();
+  paginationLibrary();
 };
 
 export const swtichLibrary = e => {
@@ -75,24 +75,29 @@ import { fetchMovieById } from './modal.js';
 const localStorageWatched = localStorage.getItem('watchedList');
 
 const localStorageWatchedParsed = JSON.parse(localStorageWatched);
-function watchedMoviesList() {
+
+export function paginationLibrary() {
   if (localStorageWatchedParsed != null) {
     localStorageWatchedParsed.forEach(id => {
-      console.log(id);
-      fetchMovieById(id).then(([movie, configuration]) => {
-        console.log(movie);
-        showWatchedList(movie, configuration);
-      });
+      fetchMovieById(id)
+        .then(([movie, configuration]) => {
+          showWatchedList(movie, configuration);
+          displayPaginationLibrary(currentPageNumber);
+        })
+        .catch(error => {
+          console.error(
+            'movies or categories request failed. Error: ' + error.message
+          );
+        });
     });
   } else return;
 }
-
 function showWatchedList(movie, configuration) {
   nothingWatched.style.display = 'none';
   let title = movie.title;
   let category = [];
   movie.genres.forEach(genre => category.push(genre.name));
-  console.log(category);
+
   let year = movie.release_date.slice(0, 4);
   let poster = configuration.images.base_url + 'w500' + movie.poster_path;
   watchedMoviesContainer.insertAdjacentHTML(
@@ -106,4 +111,55 @@ function showWatchedList(movie, configuration) {
     </div>
   </li>`
   );
+}
+
+const currentPageNumber = 1;
+const pageNumberLibrary = document.querySelector('.page-numbers-library');
+function displayPaginationLibrary(currentPageNumber) {
+  const totalCalc = watchedMoviesContainer.childElementCount - 1;
+  let total = Math.round(totalCalc / 20);
+  if (total < 1) {
+    total = 1;
+  }
+  const pageNumbersArr = [];
+
+  for (let i = 1; i <= total; i++) {
+    const pageNumber = `<p id="${i}" class="page-number ${
+      i === currentPageNumber ? 'active' : ''
+    }">${i}</p>`;
+    if (
+      i === 1 ||
+      i === total ||
+      (i >= currentPageNumber - 2 && i <= currentPageNumber + 2)
+    ) {
+      pageNumbersArr.push(pageNumber);
+    } else if (i === currentPageNumber - 3 || i === currentPageNumber + 3) {
+      pageNumbersArr.push('<span>...</span>');
+    }
+  }
+
+  pageNumberLibrary.innerHTML = pageNumbersArr.join('');
+}
+
+export function selectPageLibrary(e) {
+  if (e.target.nodeName !== 'P') {
+    return;
+  }
+  watchedMoviesContainer.innerHTML = '';
+  currentPageNumber = parseInt(e.target.id);
+  paginationLibrary(currentPageNumber);
+}
+export function nextPageDisplayLibrary(e) {
+  e.preventDefault();
+  watchedMoviesContainer.innerHTML = '';
+  currentPageNumber++;
+  paginationLibrary(currentPageNumber);
+}
+export function prevPageDisplayLibrary(e) {
+  e.preventDefault();
+  if (currentPageNumber > 1) {
+    watchedMoviesContainer.innerHTML = '';
+    currentPageNumber--;
+    paginationLibrary(currentPageNumber);
+  }
 }
