@@ -85,7 +85,7 @@ function modalMovieInfo(movie, configuration) {
           <button class="movie-modal__button movie-modal__button--watched">
             ADD TO WATCHED
           </button>
-          <button class="movie-modal__button">ADD TO QUEUE</button>
+          <button class="movie-modal__button movie-modal__button--queue">ADD TO QUEUE</button>
         </div>
       </div>
         `
@@ -97,6 +97,12 @@ function modalMovieInfo(movie, configuration) {
 
   addWatchedButton.addEventListener('click', () => {
     handleAddToFavorites(id);
+  });
+
+  let addQueueButton = document.querySelector('.movie-modal__button--queue');
+
+  addQueueButton.addEventListener('click', () => {
+    handleAddToQueue(id);
   });
 }
 
@@ -135,4 +141,20 @@ function handleAddToFavorites(id) {
   localStorageWatchedParsed.push(id);
   const currentArrayStringified = JSON.stringify(localStorageWatchedParsed);
   localStorage.setItem('watchedList', currentArrayStringified);
+}
+
+function handleAddToQueue(id) {
+  const localStorageQueue = localStorage.getItem('queueList');
+  let localStorageQueueParsed = [];
+  if (localStorageQueue) {
+    localStorageQueueParsed = JSON.parse(localStorageQueue);
+  }
+
+  if (localStorageQueueParsed.includes(id)) {
+    return;
+  }
+
+  localStorageQueueParsed.push(id);
+  const currentArrayStringified = JSON.stringify(localStorageQueueParsed);
+  localStorage.setItem('queueList', currentArrayStringified);
 }
