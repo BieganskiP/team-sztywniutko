@@ -93,7 +93,6 @@ async function fetchMoviesAndCategories(page) {
 
   const configuration = await confResponse.json();
   const genres = await genresResponse.json();
-
   return [movies, configuration.images, genres.genres];
 }
 
