@@ -8,6 +8,7 @@ const pageNumbers = document.querySelector('.page-numbers');
 const loader = document.querySelector('.loader');
 const searchInput = document.querySelector('.search-form__input');
 const error = document.querySelector('.header__error');
+const paginations = document.querySelector('.pagination');
 let currentPageNumber = 1;
 import { attachModal } from './modal.js';
 
@@ -31,8 +32,8 @@ async function fetchMoviesByKeyword(keyword) {
     throw new Error(message);
   }
   loader.style.display = 'none';
-  const movies = await moviesResponse.json();
 
+  const movies = await moviesResponse.json();
   const configuration = await confResponse.json();
   const genres = await genresResponse.json();
   return [movies, configuration.images, genres.genres];
@@ -49,6 +50,8 @@ searchInput.addEventListener(
         .then(([movies, configuration, genres]) => {
           showMovieList(movies, configuration, genres);
           pageNumbers.innerHTML = '';
+          paginations.style.display = 'none';
+
           if (movieLibraryContainer.innerHTML == '') {
             error.style.visibility = 'visible';
           } else {
@@ -107,6 +110,7 @@ export function pagination(page) {
     .then(([movies, configuration, genres]) => {
       showMovieList(movies, configuration, genres);
       displayPagination(currentPageNumber);
+      paginations.style.display = 'flex';
     })
     .catch(error => {
       console.error(
