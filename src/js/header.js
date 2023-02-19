@@ -53,7 +53,7 @@ export const displayLibrary = e => {
   libraryContainer.style.display = 'block';
   watchedMoviesContainer.style.display = 'flex';
   queuedMoviesContainer.style.display = 'none';
-  displayWatched;
+  displayWatched();
 };
 
 export const swtichLibrary = e => {
