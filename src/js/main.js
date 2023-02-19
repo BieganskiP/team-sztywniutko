@@ -7,6 +7,7 @@ const movieLibraryContainer = document.querySelector('.movie-set');
 const pageNumbers = document.querySelector('.page-numbers');
 const loader = document.querySelector('.loader');
 const searchInput = document.querySelector('.search-form__input');
+const error = document.querySelector('.header__error');
 let currentPageNumber = 1;
 import { attachModal } from './modal.js';
 
@@ -48,6 +49,11 @@ searchInput.addEventListener(
         .then(([movies, configuration, genres]) => {
           showMovieList(movies, configuration, genres);
           pageNumbers.innerHTML = '';
+          if (movieLibraryContainer.innerHTML == '') {
+            error.style.visibility = 'visible';
+          } else {
+            error.style.visibility = 'hidden';
+          }
         })
         .catch(error => {
           console.error(
@@ -162,7 +168,10 @@ export function selectPage(e) {
 export function nextPageDisplay(e) {
   e.preventDefault();
   movieLibraryContainer.innerHTML = '';
-  currentPageNumber++;
+  if (currentPageNumber < 20) {
+    currentPageNumber++;
+  }
+
   pagination(currentPageNumber);
 }
 export function prevPageDisplay(e) {
