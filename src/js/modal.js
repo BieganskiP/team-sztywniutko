@@ -1,5 +1,6 @@
 let apiKey = 'bfe21f4061b2869ccff2b4c323a3a257';
 let base_url = 'https://api.themoviedb.org/3';
+import Notiflix from 'notiflix';
 
 export function attachModal() {
   document.querySelector('.movie-set').addEventListener('click', openModal);
@@ -135,11 +136,13 @@ function handleAddToFavorites(id) {
   }
 
   if (localStorageWatchedParsed.includes(id)) {
+    Notiflix.Notify.info('This movie is already in your library');
     return;
   }
 
   localStorageWatchedParsed.push(id);
   const currentArrayStringified = JSON.stringify(localStorageWatchedParsed);
+  Notiflix.Notify.success('The movie was successfully added to your library!');
   localStorage.setItem('watchedList', currentArrayStringified);
 }
 
@@ -151,10 +154,12 @@ function handleAddToQueue(id) {
   }
 
   if (localStorageQueueParsed.includes(id)) {
+    Notiflix.Notify.info('This movie is already in your queue');
     return;
   }
 
   localStorageQueueParsed.push(id);
+  Notiflix.Notify.success('The movie was successfully added to your queue');
   const currentArrayStringified = JSON.stringify(localStorageQueueParsed);
   localStorage.setItem('queueList', currentArrayStringified);
 }
