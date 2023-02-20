@@ -14,7 +14,7 @@ async function openModal(event) {
   }
 
   const movieId = movie.dataset.movieId;
-  console.log(movieId);
+ 
 
   const [fetchedMovie, configuration] = await fetchMovieById(movieId);
   modalMovieInfo(fetchedMovie, configuration);
