@@ -1,12 +1,5 @@
-let toTopButton = document.getElementById('toTopBtn');
-
-window.onscroll = function () {
-  scrollFunction();
-};
-
-toTopButton.addEventListener('click', topFunction);
-
-function scrollFunction() {
+const toTopButton = document.querySelector('#toTopBtn');
+export function scrollFunction() {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
     toTopButton.style.display = 'block';
   } else {
@@ -14,7 +7,7 @@ function scrollFunction() {
   }
 }
 
-function topFunction() {
+export function topFunction() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 }
