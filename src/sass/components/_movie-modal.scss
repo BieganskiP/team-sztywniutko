@@ -13,6 +13,7 @@
 .is-hidden {
   opacity: 0;
   z-index: -1;
+  transition: all 500ms ease-in;
 }
 
 .backdrop {
@@ -22,9 +23,11 @@
   left: 0;
   position: fixed;
   background: #404040bf;
+  transition: all 500ms ease-in;
 }
 
 .movie-modal {
+  opacity: 1;
   height: 98vh;
   overflow-y: scroll;
   top: 50%;
