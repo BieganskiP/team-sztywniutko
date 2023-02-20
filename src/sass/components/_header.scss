@@ -82,6 +82,9 @@
 
   text-shadow: 0 0 20px #fff, 0 0 30px $accent, 0 0 40px $accent,
     0 0 80px $accent, 0 0 120px $accent, 0 0 160px $accent;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: text-shadow;
 }
 
 .nav__btn--active::after {

@@ -31,9 +31,15 @@
     &:hover use {
       fill: transparent;
       stroke: $accent;
+      transition-duration: 250ms;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-property: fill;
     }
     &:hover {
       background-color: $main-text;
+      transition-duration: 250ms;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-property: background-color;
     }
   }
   .page-numbers-library,
@@ -60,6 +66,9 @@
       &:hover {
         background-color: $button-background;
         color: $main-text;
+        transition-duration: 250ms;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-property: color, background-color;
       }
     }
   }
