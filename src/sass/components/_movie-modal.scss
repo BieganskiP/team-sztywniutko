@@ -25,6 +25,8 @@
 }
 
 .movie-modal {
+  height: 98vh;
+  overflow-y: scroll;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -115,6 +117,8 @@
 @media (min-width: 768px) {
   .movie-modal {
     width: 618px;
+    height: auto;
+    overflow-y: auto;
     &__image {
       width: 264px;
       height: 374px;
