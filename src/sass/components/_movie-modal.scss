@@ -46,6 +46,11 @@
       color: white;
       border: none;
     }
+    &--watched:hover {
+      transform: scale(1.04);
+      box-shadow: 0px 0px 10px 4px rgba(138, 132, 131, 1);
+      transition: box-shadow 0.5s linear;
+    }
     &--close {
       position: absolute;
       right: 18px;
@@ -53,6 +58,11 @@
       border: none;
       background-color: white;
       cursor: pointer;
+    }
+    &--queue:hover {
+      transform: scale(1.04);
+      box-shadow: 0px 0px 10px 4px rgba(138, 132, 131, 1);
+      transition: box-shadow 0.5s linear;
     }
   }
   &__container {
