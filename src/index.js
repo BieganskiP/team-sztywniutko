@@ -7,8 +7,10 @@ import {
   pagination,
 } from './js/main';
 
+import { displayQueued, displayWatched } from './js/header';
 
 const libraryBtn = document.querySelector('[data-library]');
+const watchedBtn = document.querySelector('[data-watched]');
 const queueBtn = document.querySelector('[data-queue]');
 const nextPage = document.querySelector('.next-button');
 const prevPage = document.querySelector('.prev-button');
@@ -21,3 +23,6 @@ nextPage.addEventListener('click', nextPageDisplay);
 prevPage.addEventListener('click', prevPageDisplay);
 pageNumbers.addEventListener('click', selectPage);
 pagination();
+
+queueBtn.addEventListener('click', displayQueued);
+watchedBtn.addEventListener('click', displayWatched);

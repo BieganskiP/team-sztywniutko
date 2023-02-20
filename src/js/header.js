@@ -10,19 +10,12 @@ const homepageMoviesContainer = document.querySelector('.movie-container');
 const watchedMoviesContainer = document.querySelector('.watched');
 const queuedMoviesContainer = document.querySelector('.queued');
 const libraryContainer = document.querySelector('.library-container');
-const nothingWatched = document.querySelector('.library__starter');
-
-const localStorageQueued = localStorage.getItem('queueList');
-const localStorageQueuedParsed = JSON.parse(localStorageQueued);
-
-const localStorageWatched = localStorage.getItem('watchedList');
-const localStorageWatchedParsed = JSON.parse(localStorageWatched);
 
 import { fetchMovieById } from './modal.js';
 
 export const displayHomePage = e => {
   e.currentTarget.removeEventListener('click', displayHomePage);
-  //header-style chcange: homepage version
+  //header-style change: homepage version
   libraryDiv.style.display = 'none';
   headerSearchDiv.style.display = 'block';
   header.classList.remove('library');
@@ -58,6 +51,7 @@ export const displayLibrary = e => {
 
 export const swtichLibrary = e => {
   e.currentTarget.removeEventListener('click', swtichLibrary);
+
   if (e.currentTarget.classList.contains('library-container__btn--active')) {
     return;
   }
@@ -115,7 +109,10 @@ function showQueuedMovieList(movie, configuration) {
   </li>`
   );
 }
-function displayWatched() {
+export function displayWatched() {
+  const localStorageWatched = localStorage.getItem('watchedList');
+  const localStorageWatchedParsed = JSON.parse(localStorageWatched);
+  
   if (localStorageWatchedParsed != null) {
     watchedMoviesContainer.innerHTML = '';
     localStorageWatchedParsed.forEach(id => {
@@ -130,10 +127,16 @@ function displayWatched() {
           );
         });
     });
-  } else return;
+  } else {
+    console.log('101');
+    return;
+  }
 }
-watchedBtn.addEventListener('click', displayWatched);
-function displayQueued() {
+
+export function displayQueued() {
+  const localStorageQueued = localStorage.getItem('queueList');
+  const localStorageQueuedParsed = JSON.parse(localStorageQueued);
+
   if (localStorageQueuedParsed != null) {
     queuedMoviesContainer.innerHTML = '';
     localStorageQueuedParsed.forEach(id => {
@@ -150,4 +153,3 @@ function displayQueued() {
     });
   } else return;
 }
-queueBtn.addEventListener('click', displayQueued);
