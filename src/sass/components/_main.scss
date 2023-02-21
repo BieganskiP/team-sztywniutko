@@ -126,7 +126,6 @@
   .movie-card {
     width: 293px;
     height: 440px;
-    flex-basis: calc((100% - 1 * 30px) / 2);
     //margin: 30px;
     &__img {
       max-height: 398px;
@@ -139,7 +138,7 @@
   .movie-container {
     padding-left: 71px;
     padding-right: 71px;
-    max-width: 1200px;
+    max-width: 1024px;
     justify-content: center;
   }
   .movie-set {
@@ -147,6 +146,5 @@
   }
   .movie-card {
     width: 274px;
-    flex-basis: calc((100% - 2 * 30px) / 3);
   }
 }
